@@ -175,6 +175,30 @@ curl -X POST "http://127.0.0.1:8000/footprint-history" \
   -d '{"symbol":"Binance_BTCUSDT","interval":"30m"}'
 ```
 
+## Error response
+
+If the Apify Actor finishes with a non-success status, the API returns run details and any dataset error items that were available.
+
+```json
+{
+  "detail": {
+    "message": "Actor run did not succeed.",
+    "actor": "api_merge/coinglass-footprint-history",
+    "runId": "abc123",
+    "status": "FAILED",
+    "statusMessage": "CoinGlass did not return usable data right now.",
+    "exitCode": 91,
+    "datasetId": "def456",
+    "input": {
+      "mode": "footprint_history",
+      "symbol": "Binance_BTCUSDT",
+      "interval": "30m"
+    },
+    "datasetItems": []
+  }
+}
+```
+
 ## Input
 
 | Field | Required | Example | Description |
@@ -255,4 +279,3 @@ https://apify.com/api_merge/coinglass-footprint-history
     ├── python.md
     └── run_footprint.py
 ```
-
